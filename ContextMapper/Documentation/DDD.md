@@ -103,12 +103,20 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 ---
 
 #### **Sheet 6: Domain Services**
-| **Service Name**            | **Description**                                      | **Input Entities**                  | **Output Entities**                   | **Business Logic/Functionality**       |
-|----------------------------|------------------------------------------------------|-------------------------------------|---------------------------------------|---------------------------------------|
-| [Service 1]                 | Brief description of the service                     | [Entity 1, Entity 2]                | [Entity 3]                            | Brief summary of the logic            |
-| [Service 2]                 | Brief description of the service                     | [Entity 1]                          | [Entity 2]                            | Brief summary of the logic            |
-| [Service 3]                 | Brief description of the service                     | [Entity 3, Entity 4]                | [Entity 5]                            | Brief summary of the logic            |
-| ...                         | ...                                                  | ...                                 | ...                                   | ...                                   |
+          
+
+| **Service Name**     | **Description**                                                                 | **Inputs**                                     | **Outputs**                             | **Related Aggregate(s)**        |
+|-----------------------------|---------------------------------------------------------------------------------|------------------------------------------------|-----------------------------------------|---------------------------------|
+| **SurveyCreationService**    | Handles the creation of new surveys, ensuring proper structure and validation.   | SurveyTitle, SurveyDescription, Sections, Questions | New Survey Instance                     | Survey, SurveySection, SurveyQuestion |
+| **SurveyAssignmentService**  | Manages the assignment of surveys to respondents or groups.                      | SurveyID, RespondentID                         | Assignment Confirmation                 | Survey, Respondent, SurveyAssignment  |
+| **ResponseSubmissionService**| Validates and processes submitted responses, linking them to the survey.         | SurveyID, RespondentID, Answers                | Submission Confirmation, Response Object | Survey, SurveyResponse, Answer        |
+| **SurveyTemplateService**    | Allows creation and management of reusable survey templates.                     | TemplateTitle, TemplateQuestions               | New Survey Template                     | SurveyTemplate, TemplateQuestion      |
+| **ChangeTrackingService**    | Tracks changes made to surveys and responses, recording version history.         | SurveyID, Changes, ChangeDescription           | ChangeRecord                            | Survey, ChangeRecord                 |
+| **ResponseVerificationService** | Verifies the accuracy and validity of submitted responses.                    | ResponseID, VerificationStatus                 | Verification Status                     | SurveyResponse, ResponseVerification |
+| **SurveyAnalyticsService**   | Provides analysis and reporting on survey responses and results.                 | SurveyID, ResponseData                        | SurveyReport                            | Survey, SurveyResponse, SurveyReport  |
+| **SurveyExportService**      | Exports survey results and responses into specified formats (e.g., CSV, PDF).    | SurveyID, ExportFormat                        | Exported File                           | Survey, SurveyResponse               |
+| **QuestionCategoryService**  | Assigns or manages categories for questions within a survey.                     | SurveyID, QuestionID, CategoryID              | Category Assignment Confirmation         | Survey, SurveyQuestion, Category     |
+
 
 ---
 
