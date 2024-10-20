@@ -1,4 +1,4 @@
-Here's a detailed Excel format for collecting the necessary information for a project that will follow **Domain-Driven Design (DDD)** principles. This format will help gather information on key aspects like domain knowledge, bounded contexts, aggregates, entities, value objects, and services. Each section corresponds to a critical element of a DDD project.
+Here's a detailed collection of the necessary information for a project that will follow **Domain-Driven Design (DDD)** principles. This will help gather information on key aspects like domain knowledge, bounded contexts, aggregates, entities, value objects, and services. Each section corresponds to a critical element of a SQMS DDD project.
 
 ---
 
@@ -138,11 +138,19 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 ---
 
 #### **Sheet 8: Repository Details**
-| **Repository Name**         | **Belongs to Aggregate**                             | **Methods**                         | **Technology**                        | **Description**                      |
-|----------------------------|------------------------------------------------------|-------------------------------------|---------------------------------------|--------------------------------------|
-| [Repository 1]              | [Aggregate 1]                                        | [Save, Get, Delete]                 | SQL, NoSQL, etc.                      | Repository for handling Survey       |
-| [Repository 2]              | [Aggregate 2]                                        | [Save, Get, Update]                 | SQL, NoSQL, etc.                      | Repository for handling Responses    |
-| ...                         | ...                                                  | ...                                 | ...                                   | ...                                  |
+| **Repository Name**         | **Description**                                                      | **Managed Aggregate(s)**                  | **Methods**                                      | **Storage Technology**          |
+|-----------------------------|----------------------------------------------------------------------|-------------------------------------------|-------------------------------------------------|---------------------------------|
+| **SurveyRepository**         | Responsible for persisting and retrieving surveys and related data.  | `Survey`, `SurveySection`, `SurveyQuestion` | - `Save(Survey survey)`<br>- `FindById(SurveyID)`<br>- `FindAll()`<br>- `Delete(SurveyID)` | Relational DB (SQL/NoSQL)       |
+| **QuestionnaireRepository**  | Manages storage for survey sections and questions.                   | `SurveySection`, `SurveyQuestion`         | - `Save(Section section)`<br>- `FindQuestionsBySurvey(SurveyID)`<br>- `Delete(SectionID)`   | Relational DB (SQL/NoSQL)       |
+| **ResponseRepository**       | Stores survey responses and answers from respondents.                | `SurveyResponse`, `Answer`                | - `Save(Response response)`<br>- `FindBySurvey(SurveyID)`<br>- `Delete(ResponseID)`         | Relational DB (SQL/NoSQL)       |
+| **TemplateRepository**       | Handles storage and retrieval of survey templates.                   | `SurveyTemplate`, `TemplateQuestion`      | - `Save(Template template)`<br>- `FindById(TemplateID)`<br>- `Delete(TemplateID)`           | Relational DB (SQL/NoSQL)       |
+| **AssignmentRepository**     | Manages survey assignment to respondents or groups.                  | `SurveyAssignment`                        | - `Save(Assignment assignment)`<br>- `FindBySurvey(SurveyID)`<br>- `Delete(AssignmentID)`   | Relational DB (SQL/NoSQL)       |
+| **AnalyticsRepository**      | Stores and retrieves survey analytics and reports.                   | `SurveyReport`                            | - `Save(Report report)`<br>- `FindBySurvey(SurveyID)`<br>- `Delete(ReportID)`               | Relational DB (SQL/NoSQL)       |
+| **ChangeTrackingRepository** | Stores change logs related to survey modifications and responses.    | `ChangeRecord`                            | - `Save(ChangeRecord change)`<br>- `FindBySurvey(SurveyID)`                                 | Relational DB (SQL/NoSQL)       |
+| **NotificationRepository**   | Manages notifications and events related to survey assignments.      | `Notification`                            | - `Save(Notification notification)`<br>- `FindByUser(UserID)`<br>- `Delete(NotificationID)` | Relational DB (SQL/NoSQL)       |
+| **VerificationRepository**   | Stores response verification status and history.                    | `ResponseVerification`                    | - `Save(Verification verification)`<br>- `FindByResponse(ResponseID)`                       | Relational DB (SQL/NoSQL)       |
+| **UserRepository**           | Handles storage of users and respondents in the system.              | `Respondent`, `User`                      | - `Save(User user)`<br>- `FindById(UserID)`<br>- `Delete(UserID)`                           | Relational DB (SQL/NoSQL)       |
+
 
 ---
 
@@ -166,4 +174,3 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 
 ---
 
-This Excel format allows you to systematically gather the necessary information for a project built using Domain-Driven Design principles, ensuring that your development process aligns with both business requirements and the DDD approach.
