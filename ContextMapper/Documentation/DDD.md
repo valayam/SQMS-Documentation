@@ -7,14 +7,14 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 #### **Sheet 1: Project Overview**
 | **Field**                  | **Description**                                      |
 |----------------------------|------------------------------------------------------|
-| Project Name                | Name of the project                                  |
-| Project Manager             | Name of the project manager                          |
-| Domain Expert(s)            | List of domain experts involved                      |
-| Key Stakeholders            | Key stakeholders for the project                     |
-| Start Date                  | Date the project is expected to begin                |
-| End Date                    | Expected end date of the project                     |
-| High-Level Goals            | Brief summary of the project’s goals                 |
-| Core Domain Description     | A description of the core domain(s)                  |
+| Project Name                | SQMS - Survey Questionnaire Management System       |
+| Project Manager             | TBD                                                 |
+| Domain Expert(s)            | TBD                                                 |
+| Key Stakeholders            | Benoy John                                          |
+| Start Date                  | January 2025                                        |
+| End Date                    | December 2025                                       |
+| High-Level Goals            | Brief summary of the project’s goals                |
+| Core Domain Description     | Survey Management                                   |
 
 ---
 
