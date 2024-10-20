@@ -1,0 +1,6 @@
+UseCase UC1_Example {
+  actor = "Insurance Employee"
+  secondaryActors = "Insurance Administrator", "Sales Person"
+  interactions = create a "Customer", update a "Customer", "offer" a "Contract"
+  benefit = "I am able to manage the customers data and offer them insurance contracts."
+}

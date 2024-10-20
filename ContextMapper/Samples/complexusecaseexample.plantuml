@@ -1,0 +1,14 @@
+@startuml
+actor Buyer
+actor Seller
+usecase (Place Order) as UC1
+usecase (Process Payment) as UC2
+usecase (Ship Order) as UC3
+usecase (Track Order) as UC4
+
+Buyer -- UC1
+UC1 .> UC2 : include
+UC1 .> UC3 : <<extends>>
+UC3 .> UC4 : include
+Seller -- UC3
+@enduml

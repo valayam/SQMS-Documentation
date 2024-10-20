@@ -1,0 +1,12 @@
+BoundedContext ExampleContext
+
+Stakeholders of ExampleContext {
+
+  Stakeholder Shopper {
+    description "Is using the shopping system to by everday goods."
+    
+    influence MEDIUM
+    interest HIGH
+  }
+
+}

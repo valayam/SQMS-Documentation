@@ -1,0 +1,13 @@
+BoundedContext ExampleContext
+
+Stakeholders of ExampleContext {
+
+  Stakeholder Shopper
+
+  Stakeholder Software_Engineer
+
+  Stakeholder Architect
+
+  // etc.
+
+}

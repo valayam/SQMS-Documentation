@@ -1,0 +1,12 @@
+@startuml
+actor User
+usecase (Login) as UC1
+usecase (View Profile) as UC2
+usecase (Update Profile) as UC3
+
+User -- UC1
+User -- UC2
+User -- UC3
+
+UC2 .> UC3 : <<extends>>
+@enduml

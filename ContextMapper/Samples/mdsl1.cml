@@ -1,0 +1,40 @@
+// Generated from DDD Context Map 'Insurance-Example_Context-Map.cml' at 21.10.2019 17:48:52 CEST.
+API description CustomerManagementContextAPI
+usage context PUBLIC_API for BACKEND_INTEGRATION
+
+data type Address { "street":D<string>, "postalCode":D<int>, "city":D<string> }
+data type AddressId P
+data type changeCustomerParameter { "firstname":D<string>, "lastname":D<string> }
+
+endpoint type CustomersAggregate
+  serves as INFORMATION_HOLDER_RESOURCE
+  exposes
+    operation createAddress
+      with responsibility "Creates new address for customer"
+      expecting
+        payload Address
+      delivering
+        payload AddressId
+    operation changeCustomer
+      with responsibility "Changes existing customer address"
+      expecting
+        payload changeCustomerParameter
+      delivering
+        payload D<bool>
+
+// Generated from DDD upstream Bounded Context 'CustomerManagementContext' implementing OPEN_HOST_SERVICE (OHS) and PUBLISHED_LANGUAGE (PL).
+API provider CustomerManagementContextProvider
+  // The customer management context is responsible for managing all the data of the insurance companies customers.
+  offers CustomersAggregate
+  at endpoint location "http://localhost:8001"
+    via protocol "RESTfulHTTP"
+
+// Generated from DDD upstream Bounded Context 'CustomerManagementContext' implementing OPEN_HOST_SERVICE (OHS) and PUBLISHED_LANGUAGE (PL).
+API client PolicyManagementContextClient
+  // This bounded context manages the contracts and policies of the customers.
+  consumes CustomersAggregate
+API client CustomerSelfServiceContextClient
+  // This context represents a web application which allows the customer to login and change basic data records like the address.
+  consumes CustomersAggregate
+
+IPA

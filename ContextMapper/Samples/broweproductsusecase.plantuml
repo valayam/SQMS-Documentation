@@ -1,0 +1,10 @@
+@startuml
+actor Customer
+usecase (Browse Products) as UC1
+usecase (Add to Cart) as UC2
+usecase (Checkout) as UC3
+
+Customer -- UC1
+UC1 .> UC2 : include
+UC2 .> UC3 : include
+@enduml
