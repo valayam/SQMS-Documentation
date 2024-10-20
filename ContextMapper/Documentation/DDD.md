@@ -121,12 +121,19 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 ---
 
 #### **Sheet 7: Domain Events**
-| **Event Name**              | **Event Description**                                | **Source Entity**                   | **Target Entity**                     | **Conditions/Triggers**               |
-|----------------------------|------------------------------------------------------|-------------------------------------|---------------------------------------|---------------------------------------|
-| [Event 1]                   | Description of the event (e.g., Survey Completed)    | [Survey]                            | [Report]                              | [Survey status changed to Completed]  |
-| [Event 2]                   | Description of the event (e.g., Response Submitted)  | [Response]                          | [Survey]                              | [Response is submitted]               |
-| [Event 3]                   | Description of the event (e.g., Survey Published)    | [Survey]                            | [Notification Service]                | [Survey status changed to Published]  |
-| ...                         | ...                                                  | ...                                 | ...                                   | ...                                   |
+| **Event Name**           | **Description**                                                         | **Triggered By**                              | **Payload**                                        | **Related Aggregate(s)**         |
+|----------------------------------|-------------------------------------------------------------------------|------------------------------------------------|----------------------------------------------------|----------------------------------|
+| **SurveyCreated**                | Occurs when a new survey is successfully created.                       | SurveyCreationService                          | `SurveyID`, `SurveyTitle`, `CreationDate`           | Survey                          |
+| **SurveyPublished**              | Triggered when a survey is published and made available to respondents. | SurveyStatusChange (to Published)              | `SurveyID`, `PublishDate`, `PublisherID`            | Survey, SurveyStatus             |
+| **SurveyAssigned**               | Triggered when a survey is assigned to a respondent or group.           | SurveyAssignmentService                        | `SurveyID`, `RespondentID`, `AssignmentDate`        | Survey, SurveyAssignment         |
+| **SurveyResponseSubmitted**      | Occurs when a respondent submits their responses to a survey.           | ResponseSubmissionService                      | `SurveyID`, `ResponseID`, `SubmissionDate`, `Answers`| Survey, SurveyResponse            |
+| **SurveyTemplateCreated**        | Triggered when a new survey template is created.                        | SurveyTemplateService                          | `TemplateID`, `TemplateTitle`, `CreationDate`        | SurveyTemplate                   |
+| **SurveyResponseVerified**       | Occurs when a response is successfully verified.                        | ResponseVerificationService                    | `ResponseID`, `VerificationStatus`, `VerificationDate`| SurveyResponse, ResponseVerification |
+| **SurveyModified**               | Triggered when an existing survey is modified (e.g., questions, sections). | SurveyModificationService                   | `SurveyID`, `ModifiedDate`, `Changes`               | Survey, ChangeRecord             |
+| **SurveyClosed**                 | Triggered when a survey is closed and no further responses are allowed. | SurveyStatusChange (to Closed)                 | `SurveyID`, `CloseDate`, `CloserID`                 | Survey, SurveyStatus             |
+| **SurveyReportGenerated**        | Occurs when a report is generated for a survey’s results.               | SurveyAnalyticsService                         | `SurveyID`, `ReportID`, `GeneratedDate`             | Survey, SurveyReport             |
+| **SurveyExported**               | Triggered when survey data is exported in a specific format.            | SurveyExportService                            | `SurveyID`, `ExportFormat`, `ExportDate`            | Survey, SurveyResponse           |
+
 
 ---
 
