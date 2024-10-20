@@ -46,22 +46,41 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 ---
 
 #### **Sheet 3: Bounded Contexts**
-| **Context Name**            | **Description**                                      | **Core/Supporting/Generic**        | **Domain Expert**                       |
-|----------------------------|------------------------------------------------------|------------------------------------|------------------------------------------|
-| [Context 1]                 | Brief description of the bounded context             | Core                               | [Domain Expert 1]                        |
-| [Context 2]                 | Brief description of the bounded context             | Supporting                         | [Domain Expert 2]                        |
-| [Context 3]                 | Brief description of the bounded context             | Generic                            | [Domain Expert 3]                        |
-| ...                         | ...                                                  | ...                                | ...                                      |
+| **Context Name**         | **Description**                                                                 | **Category (Core/Supporting/Generic)** | **Domain Expert**            |
+|--------------------------|---------------------------------------------------------------------------------|----------------------------------------|------------------------------|
+| **SurveyContext**         | Manages the creation, modification, publishing, and archiving of surveys.        | Core                                   | [Domain Expert Name]          |
+| **QuestionnaireContext**  | Handles the structure of the questionnaire, including sections and questions.    | Core                                   | [Domain Expert Name]          |
+| **ResponseContext**       | Manages the collection, submission, and storage of responses from respondents.   | Core                                   | [Domain Expert Name]          |
+| **TemplateContext**       | Handles survey templates for reusable survey structures.                         | Supporting                             | [Domain Expert Name]          |
+| **AssignmentContext**     | Manages the assignment of surveys to respondents or respondent groups.           | Supporting                             | [Domain Expert Name]          |
+| **AnalyticsContext**      | Responsible for analyzing survey results, generating reports, and exporting data.| Supporting                             | [Domain Expert Name]          |
+| **ChangeTrackingContext** | Tracks changes in surveys and responses, including version control.              | Supporting                             | [Domain Expert Name]          |
+| **NotificationContext**   | Handles notifications related to survey events, such as assignments or due dates.| Generic                                | [Domain Expert Name]          |
+| **SecurityContext**       | Manages user authentication, authorization, and access control for the SQMS.     | Generic                                | [Domain Expert Name]          |
+| **IntegrationContext**    | Manages external API integration for third-party systems to interact with SQMS.  | Generic                                | [Domain Expert Name]          |
 
 ---
 
 #### **Sheet 4: Aggregates and Entities**
-| **Aggregate Name**          | **Entity Name**              | **Entity Description**                              | **Entity ID** | **Relationships (with other entities)** |
-|----------------------------|------------------------------|----------------------------------------------------|---------------|----------------------------------------|
-| [Aggregate 1]               | [Entity 1]                   | Description of the entity                          | [Entity ID]   | Relationships (e.g., belongs to Survey) |
-| [Aggregate 1]               | [Entity 2]                   | Description of the entity                          | [Entity ID]   | Relationships                          |
-| [Aggregate 2]               | [Entity 3]                   | Description of the entity                          | [Entity ID]   | Relationships                          |
-| ...                         | ...                          | ...                                                | ...           | ...                                    |
+| **Aggregate Name**        | **Entity Name**          | **Entity Description**                                                      | **Entity ID**             | **Relationships (with other entities)**         |
+|---------------------------|--------------------------|-----------------------------------------------------------------------------|---------------------------|-------------------------------------------------|
+| **Survey**                | Survey                   | A collection of questions designed to gather information from respondents.  | `SurveyID`                | Contains `SurveySection`, `SurveyQuestion`, `SurveyStatus` |
+|                           | SurveyStatus             | Represents the status of a survey (e.g., Draft, Published, Closed).          | `StatusID`                | Part of the `Survey` entity                     |
+|                           | SurveyHistory            | Keeps track of historical changes made to the survey.                        | `HistoryID`               | Linked to `Survey`                              |
+| **Questionnaire**         | SurveySection            | A section within a survey grouping a subset of questions.                    | `SectionID`               | Belongs to `Survey`, contains `SurveyQuestion`  |
+|                           | SurveyQuestion           | A single question within a survey.                                           | `QuestionID`              | Belongs to `SurveySection`                      |
+|                           | QuestionType             | The format or type of a question (e.g., Multiple Choice, Text).              | `QuestionTypeID`          | Part of `SurveyQuestion`                        |
+| **Response**              | SurveyResponse           | A set of answers submitted for a survey by a respondent.                     | `ResponseID`              | Linked to `Survey`, contains `Answer`           |
+|                           | Answer                   | The specific response provided to a question in a survey.                    | `AnswerID`                | Belongs to `SurveyResponse`, linked to `SurveyQuestion` |
+|                           | ResponseVerification     | The status of verification for a response (e.g., Verified, Pending).         | `VerificationID`          | Part of `SurveyResponse`                        |
+| **Template**              | SurveyTemplate           | A pre-defined structure for generating new surveys.                          | `TemplateID`              | Contains `TemplateQuestion`, `TemplateSection`  |
+|                           | TemplateQuestion         | Pre-defined question text in a survey template.                              | `TemplateQuestionID`      | Part of `SurveyTemplate`                        |
+|                           | TemplateSection          | Pre-defined sections in a survey template for grouping questions.            | `TemplateSectionID`       | Part of `SurveyTemplate`                        |
+| **Assignment**            | SurveyAssignment         | Links a survey to a respondent or group of respondents.                      | `AssignmentID`            | Linked to `Survey`, `Respondent`                |
+| **Respondent**            | Respondent               | The entity representing a person or entity answering the survey.             | `RespondentID`            | Linked to `SurveyResponse`                      |
+| **Analytics**             | SurveyReport             | A consolidated output of survey results for analysis.                        | `ReportID`                | Linked to `SurveyResponse`                      |
+| **ChangeTracking**        | ChangeRecord             | Tracks changes in questions, responses, or survey structure.                 | `ChangeRecordID`          | Linked to `Survey`, `SurveyQuestion`, `Answer`  |
+
 
 ---
 
