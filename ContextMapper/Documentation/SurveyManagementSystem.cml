@@ -1,0 +1,91 @@
+/* Core Domain: Survey Management System */
+
+/* Bounded Context: Survey Context */
+BoundedContext SurveyContext {
+
+  /* Aggregate: Survey */
+  Aggregate Survey {
+    
+    // Entity: Survey
+    Entity Survey {
+      String surveyId
+      String title
+      String surveyDescription
+      DateTime createdOn
+      List<Question> questions
+      SurveyStatus status // e.g., Draft, Published
+    }
+
+    // Value Object: SurveyTitle
+    ValueObject SurveyTitle {
+      String value // Encapsulates title logic
+    }
+
+    // Value Object: SurveyStatus
+    ValueObject SurveyStatus {
+      String value // Draft, Published, Closed
+    }
+
+    // Entity: Question
+    Entity Question {
+      String questionId
+      QuestionType questionType // e.g., MultipleChoice, Text
+      String questionText
+    }
+
+    // Value Object: QuestionType
+    ValueObject QuestionType {
+      String value // MultipleChoice, Text, etc.
+    }
+  }
+  
+  /* Service: Survey Service for managing surveys */
+  /*DomainService SurveyService {
+    String createSurvey(Survey survey)
+    void addQuestion(Survey survey, Question question)
+    void publishSurvey(Survey survey)
+  }/
+  */
+
+}
+
+/* Bounded Context: Response Context */
+BoundedContext ResponseContext {
+
+  /* Aggregate: Response */
+  Aggregate Response {
+
+    // Entity: Response
+    Entity Response {
+      String responseId
+      String respondentId
+      Survey survey
+      List<Answer> answers
+      DateTime submittedOn
+    }
+
+    // Entity: Answer
+    Entity Answer {
+      String questionId
+      String answerText
+    }
+
+  }
+
+  /* Service: ResponseService for handling survey responses */
+  /*DomainService ResponseService {
+    void submitResponse(Response response)
+    List<Answer> getAnswersForSurvey(String surveyId)
+  }*/
+
+}
+
+/* Relationship between SurveyContext and ResponseContext */
+ContextMap {
+    contains SurveyContext
+    contains ResponseContext
+    SurveyContext [P]<->[P] ResponseContext {
+        implementationTechnology = "REST"
+                
+    }
+}
