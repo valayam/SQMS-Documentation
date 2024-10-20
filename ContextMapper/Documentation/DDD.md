@@ -21,10 +21,20 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 #### **Sheet 2: Domain Knowledge Collection**
 | **Business Term**           | **Description**                                      | **Importance (Low, Medium, High)** | **Source (Domain Expert, Documentation)** |
 |----------------------------|------------------------------------------------------|------------------------------------|------------------------------------------|
-| [Term 1]                    | Description of the business term                     | Medium                             | Domain Expert                            |
-| [Term 2]                    | Description of the business term                     | High                               | Documentation                            |
-| [Term 3]                    | Description of the business term                     | Low                                | Domain Expert                            |
-| ...                         | ...                                                  | ...                                | ...                                      |
+| Survey                    | A collection of questions designed to gather information from respondents.                     | Medium                             | Domain Expert                            |
+| Questionnaire                    | A structured set of questions associated with a survey.                     | High                               | Documentation                            |
+| Question                    | A single item in a survey that requires a response.                     | Low                                | Domain Expert                            |
+|Response | The answer provided by a respondent to a question or a complete survey. | Medium                             | Domain Expert                            |
+|SurveyTemplate | A pre-defined structure for creating surveys, often used to generate new surveys with a similar format. | Medium                             | Domain Expert                            |
+|Respondent | The person or entity that provides answers to survey questions. | Medium                             | Domain Expert                            |
+|SurveyStatus | The current state of the survey (e.g., Draft, Published, Closed). | Medium                             | Domain Expert                            |
+|QuestionType | The format of the question (e.g., Multiple Choice, Text, Rating Scale). | Medium                             | Domain Expert                            |
+|Answer | The specific response provided to a question. | Medium                             | Domain Expert                            |
+|Category | A grouping mechanism for organizing questions or surveys based on themes or topics.| Medium                             | Domain Expert                            |
+|Section | A sub-division of a survey or questionnaire containing a related group of questions.| Medium                             | Domain Expert                            |
+|SurveyAssignment |The action of assigning a survey to a respondent or group of respondents.| Medium                             | Domain Expert                            |
+|ChangeTracking | A process to track changes in survey questions, responses, or structure over time.| Medium                             | Domain Expert                            |
+|SurveyReport | A consolidated output of survey results, often used for analysis.| Medium                             | Domain Expert                            |
 
 ---
 
