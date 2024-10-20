@@ -85,12 +85,20 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 ---
 
 #### **Sheet 5: Value Objects**
-| **Value Object Name**       | **Description**                                      | **Belongs to Aggregate**            | **Validation Rules**                   |
-|----------------------------|------------------------------------------------------|-------------------------------------|----------------------------------------|
-| [Value Object 1]            | Brief description of the value object                | [Aggregate 1]                       | [Max length, Required]                 |
-| [Value Object 2]            | Brief description of the value object                | [Aggregate 1]                       | [Pattern, Format]                      |
-| [Value Object 3]            | Brief description of the value object                | [Aggregate 2]                       | [Required, Non-empty]                  |
-| ...                         | ...                                                  | ...                                 | ...                                    |
+| **Value Object Name**      | **Description**                                                      | **Belongs to Aggregate**    | **Validation Rules**                      |
+|----------------------------|----------------------------------------------------------------------|-----------------------------|-------------------------------------------|
+| **SurveyTitle**             | The title of a survey, which is immutable once the survey is created.| Survey                      | Max length: 200 characters, Required      |
+| **SurveyDescription**       | A brief description of the survey’s purpose or scope.                | Survey                      | Max length: 500 characters, Optional      |
+| **TemplateTitle**           | The title for a survey template.                                     | SurveyTemplate              | Max length: 200 characters, Required      |
+| **TemplateQuestionText**    | The default text for a question in a survey template.                | SurveyTemplate              | Max length: 300 characters, Required      |
+| **QuestionText**            | The actual text of a question presented in the survey.               | SurveyQuestion              | Max length: 300 characters, Required      |
+| **QuestionType**            | Defines the type of a question (e.g., Multiple Choice, Text).        | SurveyQuestion              | Must be a valid predefined question type  |
+| **AnswerText**              | The text of a respondent’s answer to a question.                    | Answer                      | Max length: 1000 characters, Required     |
+| **SectionTitle**            | The title for a specific section within a survey.                   | SurveySection               | Max length: 150 characters, Required      |
+| **ResponseDate**            | The date and time when a response was submitted.                    | SurveyResponse              | Must be a valid date-time format          |
+| **SurveyStatusValue**       | Represents the value of a survey’s status (e.g., Draft, Published).  | SurveyStatus                | Must be one of: Draft, Published, Closed  |
+| **ChangeDescription**       | Description of changes made to a survey or response.                | ChangeRecord                | Max length: 500 characters, Optional      |
+| **VerificationStatus**      | Status of response verification (e.g., Verified, Pending).           | ResponseVerification        | Must be one of: Verified, Pending         |
 
 ---
 
