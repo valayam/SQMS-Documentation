@@ -35,7 +35,14 @@ Here's a detailed Excel format for collecting the necessary information for a pr
 |SurveyAssignment |The action of assigning a survey to a respondent or group of respondents.| Medium                             | Domain Expert                            |
 |ChangeTracking | A process to track changes in survey questions, responses, or structure over time.| Medium                             | Domain Expert                            |
 |SurveyReport | A consolidated output of survey results, often used for analysis.| Medium                             | Domain Expert                            |
-
+|TemplateTitle | The title used in a survey template. | Low                                | Domain Expert                            |
+|TemplateQuestionText | The default text for a question in a template. | Low                                | Domain Expert                            |
+|SurveyHistory | A log or record of past versions of a survey or responses. | Low                                | Domain Expert                            |
+|Workflow | A sequence of steps involved in creating, assigning, and managing surveys and responses. | Low                                | Domain Expert                            |
+|SurveyExport | The process of exporting survey data into formats for analysis or reporting. | Low                                | Domain Expert                            |
+|Delegation | The act of assigning parts of the survey (or individual questions) to different team members for management or review. | Low                                | Domain Expert                            |
+|SurveyAnalytics | The analysis of survey results to derive insights or conclusions. | Low                                | Domain Expert                            |
+|ResponseVerification | The process of checking the accuracy and validity of responses. | Low                                | Domain Expert                            |
 ---
 
 #### **Sheet 3: Bounded Contexts**
